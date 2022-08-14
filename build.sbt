@@ -6,3 +6,4 @@ lazy val root = (project in file("."))
   .settings(
     name := "db-con-pat-matching-logging"
   )
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.10"

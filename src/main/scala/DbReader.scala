@@ -1,19 +1,30 @@
 package DbReader
 
-import java.util.logging.Logger
+import org.slf4j.LoggerFactory
 
 object DbReader {
+  private val logger = LoggerFactory.getLogger(this.getClass)
 
-  val log = Logger.getLogger("DbReader")
   def readTable(tableName: String): Unit = tableName match {
-    case "books" => log.info("get books")
-    case "authors" => log.info("get authors")
+    case "books" => logger.debug("get books")
+    case "authors" => logger.debug("get authors")
     case _ => throw new IllegalArgumentException(s"can't resolve table ${tableName}")
   }
 
+}
+
+object ReadDb{
   def main(args: Array[String]): Unit = {
 
-    readTable("books")
-    readTable("authors")
+    val logger = LoggerFactory.getLogger("DbReader.ReadDb")
+    logger.info("Start application")
+
+    DbReader.readTable("books")
+
+    logger.info("Stop application")
   }
+
 }
+
+
+
